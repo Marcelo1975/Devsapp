@@ -29,7 +29,8 @@ build/
 .gradle
 local.properties
 *.iml
-package-lock.json
+# Package-lock.json
+/package-lock.json
 
 # node.js
 #
