@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Button, FlatList, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { getChatList, setActiveChat } from '../actions/ChatActions';
 import ConversasItem from '../components/ConversasList/ConversasItem';
@@ -13,10 +13,15 @@ export class ConversasList extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			loading:true
+		};
 
-		this.props.getChatList( this.props.uid );
+		this.props.getChatList( this.props.uid, ()=>{
+			this.setState({loading:false});
+		} );
 		this.conversaClick = this.conversaClick.bind(this);
+
 	}
 
 	componentDidUpdate() {
@@ -28,10 +33,11 @@ export class ConversasList extends Component {
 	conversaClick(data) {
 		this.props.setActiveChat( data.key );
 	}
- 
+
 	render() {
-		return(
+		return (
 			<View style={styles.container}>
+				{this.state.loading && <ActivityIndicator size="large" />}
 				<FlatList
 					data={this.props.chats}
 					renderItem={({item})=><ConversasItem data={item} onPress={this.conversaClick} />}
@@ -39,6 +45,7 @@ export class ConversasList extends Component {
 			</View>
 		);
 	}
+
 }
 
 const styles = StyleSheet.create({
@@ -48,7 +55,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-	return{
+	return {
 		status:state.auth.status,
 		uid:state.auth.uid,
 		activeChat:state.chat.activeChat,

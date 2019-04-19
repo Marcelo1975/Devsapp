@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import { checkLogin } from '../actions/AuthActions';
 
@@ -23,24 +23,30 @@ export class Preload extends Component {
 	}
 
 	directPages() {
-		switch(this.props.status){
+
+		switch(this.props.status) {
 			case 1:
-				this.props.navigation.dispatch(NavigationActions.reset({
+
+				this.props.navigation.dispatch(StackActions.reset({
 					index:0,
 					actions:[
 						NavigationActions.navigate({routeName:'Conversas'})
 					]
 				}));
+
 				break;
 			case 2:
-				this.props.navigation.dispatch(NavigationActions.reset({
+
+				this.props.navigation.dispatch(StackActions.reset({
 					index:0,
 					actions:[
 						NavigationActions.navigate({routeName:'Home'})
 					]
 				}));
+
 				break;
 		}
+
 	}
 
 	componentDidMount() {
@@ -52,25 +58,49 @@ export class Preload extends Component {
 	}
 
 	render() {
-		return(
+		return (
 			<View style={styles.container}>
-				<Text>Carregando... {this.props.status}</Text>
+				<Text style={styles.appName}>DevsApp 1.0</Text>
+				<Text>Carregando...</Text>
 			</View>
 		);
 	}
+
 }
 
 const styles = StyleSheet.create({
 	container:{
-		margin:10
+		flex:1,
+		justifyContent:'center',
+		alignItems:'center'
+	},
+	appName:{
+		fontSize:30,
+		marginBottom:20
 	}
 });
 
 const mapStateToProps = (state) => {
-	return{
+	return {
 		status:state.auth.status
 	};
 };
 
 const PreloadConnect = connect(mapStateToProps, { checkLogin })(Preload);
 export default PreloadConnect;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

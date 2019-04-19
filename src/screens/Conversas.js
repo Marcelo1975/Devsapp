@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Compoent } from 'react';
 import { TabNavigator } from 'react-navigation';
 //import { connect } from 'react-redux';
 
@@ -25,4 +25,5 @@ const ConversasNavigator = TabNavigator({
 	animationEnabled:false,
 	swipeEnabled:false
 });
+
 export default ConversasNavigator;

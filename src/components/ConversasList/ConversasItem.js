@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-
+import { View, Text, TouchableHighlight, StyleSheet } from 'react-native';
 
 export default class ConversasItem extends Component {
 
@@ -16,14 +15,15 @@ export default class ConversasItem extends Component {
 
 	render() {
 		return (
-			<TouchableHighlight underlayColor="#DDDDDD" style={ConversasItemStyle.buttonArea} onPress={this.onClick} >
+			<TouchableHighlight underlayColor="#DDDDDD" style={ConversasItemStyles.buttonArea} onPress={this.onClick}>
 				<Text>{this.props.data.title}</Text>
 			</TouchableHighlight>
 		);
 	}
+
 }
 
-const ConversasItemStyle = StyleSheet.create({
+const ConversasItemStyles = StyleSheet.create({
 	buttonArea:{
 		height:40,
 		flex:1,

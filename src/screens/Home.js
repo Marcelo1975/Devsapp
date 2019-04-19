@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { checkLogin } from '../actions/AuthActions';
 
@@ -19,7 +19,7 @@ export class Home extends Component {
 	}
 
 	signinButton() {
-		this.props.navigation.navigate('SignIn')
+		this.props.navigation.navigate('SignIn');
 	}
 
 	signupButton() {
@@ -27,16 +27,17 @@ export class Home extends Component {
 	}
 
 	render() {
-		return(
+		return (
 			<View style={styles.container}>
 				<Text style={styles.h1}>Devsapp 1.0</Text>
 				<View style={styles.buttonArea}>
-					<Button title="Login" onPress={this.signinButton} />
-					<Button title="Cadastrar" onPress={this.signupButton} />
+					<Button onPress={this.signinButton} title="Login" />
+					<Button onPress={this.signupButton} title="Cadastrar" />
 				</View>
 			</View>
 		);
 	}
+
 }
 
 const styles = StyleSheet.create({
@@ -58,10 +59,26 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-	return{
+	return {
 		status:state.auth.status
 	};
 };
 
 const HomeConnect = connect(mapStateToProps, { checkLogin })(Home);
 export default HomeConnect;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

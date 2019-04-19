@@ -2,22 +2,20 @@ const initialState = {
 	chats:[],
 	contacts:[],
 	activeChat:'',
-	activeChatTitle:''
+	activeChatTitle:'',
+	activeChatMessages:[]
 };
 
 const ChatReducer = (state = initialState, action) => {
 
-	/*if(action.type == 'changeStatus') {
-		return{...state, status:action.payload.status};
-	}*/
-
 	if(action.type == 'setChatList') {
-		return { ...state, chats:action.payload.chats };
+		return { ...state, chats:action.payload.chats};
 	}
 
 	if(action.type == 'setContactList') {
-		return { ...state, contacts:action.payload.users };
+		return { ...state, contacts:action.payload.users}
 	}
+
 	if(action.type == 'setActiveChat') {
 		let chatTitle = '';
 
@@ -27,10 +25,15 @@ const ChatReducer = (state = initialState, action) => {
 			}
 		}
 
-		return { ...state, activeChat:action.payload.chatid, activeChatTitle:chatTitle };
+		return { ...state, activeChat:action.payload.chatid, activeChatTitle:chatTitle};
+	}
+
+	if(action.type == 'setActiveChatMessage') {
+		return { ...state, activeChatMessages:action.payload.msgs};
 	}
 
 	return state;
+
 };
 
 export default ChatReducer;

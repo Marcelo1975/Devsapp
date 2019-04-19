@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
+
 import { SignOut } from '../actions/AuthActions';
 
 export class Config extends Component {
 
 	static navigationOptions = {
 		title:'',
-		tabBarLabel:'Config',
+		tabBarLabel:'Config.',
 		header:null
 	}
 
@@ -23,24 +24,18 @@ export class Config extends Component {
 		this.props.SignOut();
 
 		window.globalNavigator.navigate('Home');
-		/*
-		this.props.navigation.dispatch(NavigationActions.reset({
-			index:0,
-			actions:[
-				NavigationActions.navigate({routeName:'Home'})
-			]
-		}));
-		*/
 	}
 
 	render() {
-		return(
+		return (
 			<View style={styles.container}>
-				<Text>Página Config</Text>
-				<Button title="Sair" onPress={this.sair}  />
+				<Text>PAGINA CONFIG</Text>
+
+				<Button title="Sair" onPress={this.sair} />
 			</View>
 		);
 	}
+
 }
 
 const styles = StyleSheet.create({
@@ -50,7 +45,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-	return{
+	return {
 		status:state.auth.status,
 		uid:state.auth.uid
 	};
@@ -58,3 +53,19 @@ const mapStateToProps = (state) => {
 
 const ConfigConnect = connect(mapStateToProps, { SignOut })(Config);
 export default ConfigConnect;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

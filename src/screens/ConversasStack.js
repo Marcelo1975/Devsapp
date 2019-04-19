@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Compoent } from 'react';
 import { StackNavigator } from 'react-navigation';
 //import { connect } from 'react-redux';
 
@@ -13,4 +13,5 @@ const ConversasStackNavigator = StackNavigator({
 		screen:ConversaInterna
 	}
 });
+
 export default ConversasStackNavigator;
